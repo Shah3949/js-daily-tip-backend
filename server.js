@@ -8,9 +8,6 @@ const multer = require('multer');
 const cron = require('node-cron');
 
 
-
-
-
 dotenv.config();
 
 connectDB();

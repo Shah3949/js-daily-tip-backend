@@ -33,12 +33,13 @@ cron.schedule("* * * * *", async () => {
       unsubscribed: false,
     });
 
-    subscribers.forEach((sub) => {
-      const tip = getRandomTip();
-      const message = `Hi ${sub.name},\n\n<br>Here's your JavaScript Tip of the Day:\n\n<br>${tip}`;
-      // Replace placeholders
+    
+      subscribers.forEach((sub) => {
+        for (let i = 0; i < sub.tipsPerDay; i++) {
+        const tip = getRandomTip();
+        const message = `Hi ${sub.name},\n\n<br>Here's your JavaScript Tip of the Day:\n\n<br>${tip}`;
+        // Replace placeholders
 
-      for (let i = 0; i < sub.tipsPerDay; i++) {
         const unsubscribeConfirmationPage = `http://localhost:${process.env.PORT}/api/subscribers/unsubscribe/unsubConfirmation?userId=${sub._id}&token=${sub.unsubscribeToken}`;
 
         let personalizedContent = htmlContent
@@ -48,7 +49,8 @@ cron.schedule("* * * * *", async () => {
 
         sendMail(sub.email, personalizedContent, tip);
       }
-    });
+      });
+    
   } catch (error) {
     console.error("Error fetching subscribers:", error);
   }
