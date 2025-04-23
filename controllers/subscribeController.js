@@ -58,7 +58,7 @@ const getSubscriberById = async (req, res) => {
   try {
     const subscriber = await Subscriber.findById(req.params.id);
     if (!subscriber) {
-      return res.status(404).json({ message: 'Subscriber not found' });
+      return res.status(404).json({ message: 'Subscriber not found', msg : req.params.id });
     }
     res.status(200).json(subscriber);
   } catch (error) {

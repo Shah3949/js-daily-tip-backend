@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const {seedTipsIfEmpty}= require('../utils/seedTips'); // ← Add this
 
+let encodedPassword = encodeURIComponent(process.env.MONGO_URI);
+
+
 
 const connectDB = async () => {
   try {
