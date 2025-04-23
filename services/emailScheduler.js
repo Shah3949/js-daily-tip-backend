@@ -41,7 +41,7 @@ cron.schedule("* * * * *", async () => {
         // Replace placeholders
 
         // const unsubscribeConfirmationPage = `http://localhost:${process.env.PORT}/api/subscribers/unsubscribe/unsubConfirmation?userId=${sub._id}&token=${sub.unsubscribeToken}`;
-        const unsubscribeConfirmationPage = `https://js-daily-tip-backend.onrender.com//api/subscribers/unsubscribe/unsubConfirmation?userId=${sub._id}&token=${sub.unsubscribeToken}`;
+        const unsubscribeConfirmationPage = `https://js-daily-tip-backend.onrender.com/api/subscribers/unsubscribe/unsubConfirmation?userId=${sub._id}&token=${sub.unsubscribeToken}`;
 
         let personalizedContent = htmlContent
           .replace("{{name}}", sub.name)
