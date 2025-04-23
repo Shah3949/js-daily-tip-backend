@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsubscribe Confirmation - JS Daily Tips</title>
+</head>
+
+<body
+    style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #f9f9f9; min-height: 100vh; display: flex; flex-direction: column; margin: 0; padding: 0; box-sizing: border-box;">
+    <!-- Header with logo -->
+    <header style="background-color: #f7df1e; padding: 1rem 2rem; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+        <a href="/" class="logo"
+            style="font-size: 1.5rem; font-weight: bold; color: #323330; text-decoration: none; display: flex; align-items: center; width: fit-content;">
+            <div
+                style="background-color: #323330; color: #f7df1e; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 4px; margin-right: 0.5rem;">
+                <img src="logo.png" alt="Logo" style="width: 70px; height: 70px; margin-top: 0px;">
+            </div>
+            <span>JS Daily Tips</span>
+        </a>
+    </header>
+
+    <main
+        style="flex: 1; padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div style="width: 100%; max-width: 600px;">
+            <!-- Confirmation State (Default View) -->
+            <div id="confirmationState"
+                style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); overflow: hidden; margin-bottom: 2rem; transition: all 0.3s ease;">
+                <div style="background-color: #f7df1e; padding: 1.5rem; text-align: center;">
+                    <h1 style="font-size: 1.5rem; font-weight: 700; color: #323330;">Unsubscribe Confirmation</h1>
+                </div>
+                <div style="padding: 2rem; text-align: center;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <span
+                            style="font-size: 3rem; display: inline-block; width: 80px; height: 80px; line-height: 80px; text-align: center; border-radius: 50%; background-color: #f7df1e; color: #323330;">?</span>
+                    </div>
+                    <h2>Are you sure you want to unsubscribe?</h2>
+                    <p>We're sad to see you go. You'll no longer receive JavaScript tips in your inbox.</p>
+
+                    <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                        <button id="confirmBtn"
+                            style="display: inline-block; text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 30px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; text-align: center; border: none; background-color: #e53e3e; color: #ffffff;">Yes,
+                            Unsubscribe Me
+                        </button>
+                        <button id="keepBtn"
+                            style="display: inline-block; text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 30px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; text-align: center; border: 2px solid #f7df1e; background-color: transparent; color: #333;">No,
+                            keep My Subscription
+                        </button>
+
+                    </div>
+                    <!-- <a href="/" id="keepBtn"
+                        style="display: inline-block; text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 30px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; text-align: center; border: 2px solid #f7df1e; background-color: transparent; color: #333;">No,
+                        Keep My Subscription
+                    </a> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Success State (Shows after confirmation) -->
+        <div id="successState" aria-live="polite"
+            style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); overflow: hidden; margin-bottom: 2rem; transition: all 0.3s ease; display: none;">
+            <div style="background-color: #f7df1e; padding: 1.5rem; text-align: center;">
+                <h1 style="font-size: 1.5rem; font-weight: 700; color: #323330;">Unsubscribed Successfully</h1>
+            </div>
+            <div style="padding: 2rem; text-align: center;">
+                <div style="margin-bottom: 1.5rem;">
+                    <span
+                        style="font-size: 3rem; display: inline-block; width: 80px; height: 80px; line-height: 80px; text-align: center; border-radius: 50%; background-color: #f7df1e; color: #323330;">✓</span>
+                </div>
+                <h2>You've been unsubscribed</h2>
+
+                <div
+                    style="background-color: rgba(247, 223, 30, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; position: relative; font-style: italic;">
+                    <span
+                        style="font-size: 3rem; position: absolute; top: -0.5rem; left: 0.5rem; color: rgba(247, 223, 30, 0.5); font-family: Georgia, serif;">"</span>
+                    "The road to mastery has many paths. We're sorry to see you go, but our door remains open
+                    whenever you're ready to continue your JavaScript journey."
+                </div>
+
+                <p>If you change your mind, you can resubscribe anytime.</p>
+
+            </div>
+        </div>
+        <!-- when user choose not to unsubscrbe -->
+        <div id="keepState"
+            style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); overflow: hidden; margin-bottom: 2rem; transition: all 0.3s ease; display: none;">
+            <div style="background-color: #f7df1e; padding: 1.5rem; text-align: center;">
+                <h1 style="font-size: 1.5rem; font-weight: 700; color: #323330;">There you go!</h1>
+            </div>
+            <div style="padding: 2rem; text-align: center;">
+                <div style="margin-bottom: 1.5rem;">
+                    <span
+                        style="font-size: 3rem; display: inline-block; width: 80px; height: 80px; line-height: 80px; text-align: center; border-radius: 50%; background-color: #f7df1e; color: #323330;">✓</span>
+                </div>
+                <h2>Continue recieving your daily tips </h2>
+
+                <div
+                    style="background-color: rgba(247, 223, 30, 0.1); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; position: relative; font-style: italic;">
+                    <span
+                        style="font-size: 3rem; position: absolute; top: -0.5rem; left: 0.5rem; color: rgba(247, 223, 30, 0.5); font-family: Georgia, serif;">"</span>
+                    "A tip a day, keeps bugs ayaw"
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <footer style="background-color: #323330; color: #ffffff; padding: 1.5rem; text-align: center; margin-top: auto;">
+        <p>&copy; 2025 JS Daily Tips. All rights reserved.</p>
+        <!-- <p>
+            <a href="/privacy" style="color: #f7df1e; text-decoration: none;">Privacy Policy</a> | 
+            <a href="/terms" style="color: #f7df1e; text-decoration: none;">Terms of Service</a> | 
+            <a href="/contact" style="color: #f7df1e; text-decoration: none;">Contact Us</a>
+        </p> -->
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('userId');
+        const token = urlParams.get('token');
+
+        // If already confirmed, show success state
+        const confirmed = urlParams.get('confirmed');
+        if (confirmed === 'true') {
+            document.getElementById('confirmationState').style.display = 'none';
+            document.getElementById('successState').style.display = 'block';
+        }
+
+        // Confirm button click handler
+        document.getElementById('confirmBtn').addEventListener('click', async function () {
+            if (!userId || !token) {
+                alert("Missing user ID or token.");
+                return;
+            }
+
+            try {
+                const res = await fetch(`/api/subscribers/unsubscribe/${userId}/${token}`);
+                const text = await res.text();
+
+                if (res.ok) {
+                    document.getElementById('confirmationState').style.display = 'none';
+                    document.getElementById('successState').style.display = 'block';
+
+                    // Add 'confirmed=true' to the URL so page reloads preserve state
+                    const url = new URL(window.location);
+                    url.searchParams.set('confirmed', 'true');
+                    window.history.replaceState({}, '', url);  // Use replaceState instead of pushState
+                } else {
+                    alert(text || 'Failed to unsubscribe.');
+                }
+            } catch (error) {
+                console.error("Error during unsubscribe:", error);
+                alert("Something went wrong. Please try again.");
+            }
+        });
+
+        // keep subscription click handler
+        document.getElementById('keepBtn').addEventListener('click', async function () {
+            document.getElementById('confirmationState').style.display = 'none';
+            document.getElementById('keepState').style.display = 'block';
+
+            // Update the URL to preserve state (add 'keep=true' parameter)
+            const url = new URL(window.location);
+            url.searchParams.set('keep', 'true');  // Add the 'keep=true' parameter
+            window.history.replaceState({}, '', url);  // Use replaceState instead of pushState
+
+
+        });
+
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const keep = urlParams.get('keep');
+
+            if (keep === 'true') {
+                // Hide confirmation page and show "keep" page
+                document.getElementById('confirmationState').style.display = 'none';
+                document.getElementById('keepState').style.display = 'block';
+
+            }
+
+            
+        };
+
+
+    </script>
+
+</body>
+
+</html>
